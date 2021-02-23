@@ -1,23 +1,18 @@
 import React, { useState } from 'react'
 
 function ColorPickerStyle() {
-  const randomizerHue = Math.floor(Math.random() * 360)
-  const randomizerSL = Math.floor(Math.random() * 100)
+  const [hue, setHue] = useState(Math.floor(Math.random() * 360))
 
-  const [hue, setHue] = useState(randomizerHue)
-  const [sat, setSat] = useState(randomizerSL)
-  const [light, setLight] = useState(randomizerSL)
+  const [sat, setSat] = useState(Math.floor(Math.random() * 100))
 
+  const [light, setLight] = useState(Math.floor(Math.random() * 100))
+
+  const [alpha, setAlpha] = useState(Math.floor(Math.random()).toFixed(2))
+
+  document.body.style.backgroundColor = `hsla(${hue},${sat}%,${light}%)`
   return (
     <div>
       <h1>Color Picker</h1>
-
-      <div
-        className="ColorBox"
-        style={{
-          backgroundColor: `hsl(${hue},${sat}%,${light}%)`,
-        }}
-      ></div>
       <div>
         <input
           className="hue-slider"
@@ -54,15 +49,27 @@ function ColorPickerStyle() {
           }}
         />
         <div className="light">Light:{light}</div>
-      </div>
 
-      <button
+        <input
+          className="alpha-slider"
+          type="range"
+          min="0"
+          max="1"
+          value={alpha}
+          onChange={function (event) {
+            setAlpha(event.target.value)
+          }}
+        />
+        <div className="alpha">Alpha:{alpha}</div>
+      </div>
+      {/* <button
         onClick={function () {
-          setHue(hue)
+          setHue()
         }}
       >
         Randomize
       </button>
+    </div> */}
     </div>
   )
 }

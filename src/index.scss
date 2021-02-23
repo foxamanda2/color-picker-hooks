@@ -1,7 +1,9 @@
 :root {
   font: 16px / 1 sans-serif;
 }
-
+* {
+  background: linear-gradient();
+}
 html {
   height: 100%;
 }
@@ -9,4 +11,31 @@ html {
 body {
   margin: 0;
   min-height: 100%;
+}
+h1 {
+  text-align: center;
+}
+h2 {
+  display: flex;
+  color: gray;
+  margin: 2px;
+}
+.value {
+  flex: 1;
+  font-size: 1rem;
+}
+.slider {
+  flex: 6;
+}
+div {
+  font-size: 20px;
+  background-color: rgba(245, 245, 245, 0.144);
+  width: fit-content;
+  margin: 0px auto;
+}
+input {
+  width: 400px;
+}
+button {
+  margin: 0px auto;
 }
