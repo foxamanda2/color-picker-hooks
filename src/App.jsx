@@ -7,9 +7,9 @@ function ColorPickerStyle() {
 
   const [light, setLight] = useState(Math.floor(Math.random() * 100))
 
-  const [alpha, setAlpha] = useState(Math.floor(Math.random()).toFixed(2))
+  const [alpha, setAlpha] = useState(Math.round(Math.random() * 1 * 100) / 100)
 
-  document.body.style.backgroundColor = `hsla(${hue},${sat}%,${light}%)`
+  document.body.style.backgroundColor = `hsla(${hue},${sat}%,${light}%,${alpha})`
   return (
     <div>
       <h1>Color Picker</h1>
@@ -56,20 +56,28 @@ function ColorPickerStyle() {
           min="0"
           max="1"
           value={alpha}
+          step="0.01"
           onChange={function (event) {
             setAlpha(event.target.value)
           }}
         />
         <div className="alpha">Alpha:{alpha}</div>
+        <div className="colorFooter">
+          hsla({hue}, {sat}%, {light}%, {alpha})
+        </div>
       </div>
-      {/* <button
-        onClick={function () {
-          setHue()
-        }}
-      >
-        Randomize
-      </button>
-    </div> */}
+      <footer>
+        <button
+          onClick={function () {
+            setHue(Math.floor(Math.random() * 360))
+            setSat(Math.floor(Math.random() * 100))
+            setLight(Math.floor(Math.random() * 100))
+            setAlpha(Math.round(Math.random() * 1 * 100) / 100)
+          }}
+        >
+          Randomize
+        </button>
+      </footer>
     </div>
   )
 }
